@@ -1,6 +1,7 @@
 var url = "app_task_sql.php";
 var setFilter,actPaginate,page,form,form_comment;
 
+System.out.println("Мое почтение!");
 
 jQuery(document).ready(function() {
     Task.init();
