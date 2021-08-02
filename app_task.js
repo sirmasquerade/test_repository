@@ -20,7 +20,37 @@ var Task = function () {
         filter["rows"] = $('.rows_amount[data-table="'+label+'"]').val();
         return '&filter='+JSON.stringify(filter);
     }      
-   
+       return {
+        
+        init: function () {            
+            loadTask();
+            
+            setFilter = {
+                "task_list": function(){loadTask();}
+            }
+            
+            actPaginate = {
+              "task_list": function(){
+                  loadTask();
+                  }
+            }
+            
+            form = $('#task_form');
+            handleValidation(form);
+             
+            ["task_title","task","task_deadline","priority"].forEach(function(v) {
+                $('[name="'+v+'"]',form).rules('add', {
+                  required: true
+                });
+            });
+            
+            form_comment = $('#comment_form');
+            handleValidation(form_comment);
+            ["comment_text","task_status"].forEach(function(v) {
+                $('[name="'+v+'"]',form_comment).rules('add', {
+                  required: true
+                });
+            });
     return {
         
         init: function () {            
